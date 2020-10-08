@@ -68,13 +68,19 @@
 					"personalization_key":feat[i].personalization_key,
 					"start_time":feat[i].start_time,
 					"end_time":feat[i].end_time,
-					"dishes":feat[i].dishes[0] + feat[i].dishes[1] + feat[i].dishes[2],
 					"is_pushed":feat[i].is_pushed,
 					"item numbers":feat[i].items_numbers,
 					"coupons_applied":feat[i].coupons_applied,
 					"feedback":feat[i].feedback
                 });
             }
+		var feats = resp.trackers.dishes;
+	    for (var j = 0, len = feats.length; j < len; j++) {
+                tableData.push({
+   			"dishes":feats[j]
+                });
+            }
+	
 
             table.appendRows(tableData);
             doneCallback();
