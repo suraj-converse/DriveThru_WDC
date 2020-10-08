@@ -60,24 +60,20 @@
 
             // Iterate over the JSON object
             for (var i = 0, len = feat.length; i < len; i++) {
-		    var dishlist = feat[i].dishes;
-		    
-		    for (var j = 0, len1 = dishlist.length; j < len1; j++) {
-			tableData.push({
-			    "uuid": feat[i].uuid,
-			    "user_name": feat[i].user_name,
-			    "items_number": feat[i].items_numbers,
-						"status":feat[i].status,
-						"personalization_key":feat[i].personalization_key,
-						"start_time":feat[i].start_time,
-						"end_time":feat[i].end_time,
-						"dishes":dishlist[j],
-						"is_pushed":feat[i].is_pushed,
-						"item numbers":feat[i].items_numbers,
-						"coupons_applied":feat[i].coupons_applied,
-						"feedback":feat[i].feedback
-			});
-		    }
+                tableData.push({
+                    "uuid": feat[i].uuid,
+                    "user_name": feat[i].user_name,
+                    "items_number": feat[i].items_numbers,
+					"status":feat[i].status,
+					"personalization_key":feat[i].personalization_key,
+					"start_time":feat[i].start_time,
+					"end_time":feat[i].end_time,
+					"dishes":feat[i].dishes[0] + feat[i].dishes[1] + feat[i].dishes[2],
+					"is_pushed":feat[i].is_pushed,
+					"item numbers":feat[i].items_numbers,
+					"coupons_applied":feat[i].coupons_applied,
+					"feedback":feat[i].feedback
+                });
             }
 
             table.appendRows(tableData);
