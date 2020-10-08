@@ -68,7 +68,7 @@
 					"personalization_key":feat[i].personalization_key,
 					"start_time":feat[i].start_time,
 					"end_time":feat[i].end_time,
-					"dishes":feat[i].dishes[0] + feat[i].dishes[1],
+					"dishes":feat[i].dishes,
 					"is_pushed":feat[i].is_pushed,
 					"item numbers":feat[i].items_numbers,
 					"coupons_applied":feat[i].coupons_applied,
