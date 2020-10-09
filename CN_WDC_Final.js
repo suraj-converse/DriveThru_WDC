@@ -1,7 +1,7 @@
 (function() {
     // Create the connector object
     var myConnector = tableau.makeConnector();
-​
+
     // Define the schema
     myConnector.getSchema = function(schemaCallback) {
 		// Define Columns
@@ -38,22 +38,22 @@
             id: "ai_assisted",
             dataType: tableau.dataTypeEnum.bool
         }];
-​
+
         var tableSchema = {
             id: "DriveThru",
             alias: "Converse Now DriveThru Data",
             columns: cols
         };
-​
+
         schemaCallback([tableSchema]);
     };
-​
+
     // Download the data
     myConnector.getData = function(table, doneCallback) {
         $.getJSON("https://radagast.staging.v2.conversenow.ai/v1/metrics/trackers?from=2020-08-01&to=2020-08-08", function(resp) {
             var feat = resp.trackers,
                 tableData = [];
-​
+
             // Iterate over the JSON object
             for (var i = 0, len = feat.length; i < len; i++) {
                 var dishlist = feat[i].dishes;
@@ -82,14 +82,14 @@
                     "ai_assisted":feat[i].ai_assisted
                 });
             }
-​
+
             table.appendRows(tableData);
             doneCallback();
         });
     };
-​
+
     tableau.registerConnector(myConnector);
-​
+
     // Create event listeners for when the user submits the form
     $(document).ready(function() {
         $("#submitButton").click(function() {
